@@ -25,4 +25,11 @@ public class DepartmentController {
     public List<Department> getAllDepartments() {
         return departmentService.getAllDepartments();
     }
+
+    @GetMapping("/department/get/{id}")
+    public Department getDepartmentById(@PathVariable("id") Long departmentId) {
+        return departmentService.getDepartmentById(departmentId).orElse(
+                new Department(-1L, null, null, null)
+        );
+    }
 }
